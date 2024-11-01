@@ -3,7 +3,7 @@ kind: ConsoleLink
 metadata:
   name: developer-gitops-link
 spec:
-  href: "<REPLACE_ME>"
+  href: "https://argocd-server-composer-ai-gitops.<REPLACE_ME>"
   location: ApplicationMenu
   text: "Developer GitOps"
   applicationMenu:

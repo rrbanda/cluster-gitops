@@ -345,7 +345,7 @@ update_cluster_domain(){
   echo "Updating Base Domain to ${BASE_DOMAIN}"
 
   patch_file $APP_OF_APPS_PATCH_FILE $BASE_DOMAIN ".[0].value"
-  patch_file $ARGOCD_CONSOLE_LINK_PATCH_FILE $BASE_DOMAIN ".[0].value"
+  patch_file $ARGOCD_CONSOLE_LINK_PATCH_FILE "https://argocd-server-composer-ai-gitops.$BASE_DOMAIN" ".[0].value"
 
 
 
@@ -366,7 +366,7 @@ patch_file () {
     return
   fi
 
-  yq "${YQ_PATH} = \"${BASE_DOMAIN}\"" -i ${APP_PATCH_FILE}
+  yq "${YQ_PATH} = \"${NEW_VALUE}\"" -i ${APP_PATCH_FILE}
 }
 
 get_cluster_domain(){
