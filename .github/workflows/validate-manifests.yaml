@@ -83,10 +83,10 @@ jobs:
         env:
           EXPECTED_REPO: ${{ github.repositoryUrl }}
         run: |
-          source scripts/functions.sh  
-          validate_value "tenants/composer-ai/apps/base/patch-app-of-apps.yaml" "<REPLACE_ME>" ".[0].value" 
-          validate_value "tenants/composer-ai/argocd/base/patch-link.yaml" "<REPLACE_ME>" ".[0].value" 
-          
+          source scripts/functions.sh
+          validate_value "tenants/composer-ai/apps/base/patch-app-of-apps.yaml" "<REPLACE_ME>" ".[0].value"
+          validate_value "tenants/composer-ai/argocd/base/patch-link.yaml" "<REPLACE_ME>" ".[0].value"
+
 
   check-spelling:
     runs-on: ubuntu-latest
