@@ -1,0 +1,11 @@
+apiVersion: console.openshift.io/v1
+kind: ConsoleLink
+metadata:
+  name: developer-gitops-link
+spec:
+  href: "<REPLACE_ME>"
+  location: ApplicationMenu
+  text: "Developer GitOps"
+  applicationMenu:
+    section: OpenShift GitOps
+    imageURL: "https://argo-cd.readthedocs.io/en/stable/assets/logo.png"

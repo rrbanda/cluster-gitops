@@ -333,6 +333,8 @@ check_repo(){
 }
 
 update_cluster_domain(){
+  APP_OF_APPS_PATCH_FILE="./tenants/composer-ai/apps/base/patch-app-of-apps.yaml"
+  ARGOCD_CONSOLE_LINK_PATCH_FILE="./tenants/composer-ai/argocd/base/patch-link.yaml"
   if [ "$UPDATE_BASEDOMAIN" = false ]; then
     return
   elif [ -z BASE_DOMAIN ]; then
@@ -342,20 +344,29 @@ update_cluster_domain(){
 
   echo "Updating Base Domain to ${BASE_DOMAIN}"
 
-  APP_PATCH_FILE="tenants/composer-ai/apps/base/patch-app-of-apps.yaml"
+  patch_file $APP_OF_APPS_PATCH_FILE $BASE_DOMAIN ".[0].value"
+  patch_file $ARGOCD_CONSOLE_LINK_PATCH_FILE $BASE_DOMAIN ".[0].value"
 
-  CURRNET_BASE_DOMAIN=$(yq -r ".[0].value" ${APP_PATCH_FILE})
 
-  if [[ ${CURRNET_BASE_DOMAIN} == ${BASE_DOMAIN} ]]; then
-    echo "Base domain is already set to ${BASE_DOMAIN}"
-    return
-  fi
-
-  yq ".[0].value = \"${BASE_DOMAIN}\"" -i ${APP_PATCH_FILE}
 
   git add ${APP_PATCH_FILE}
   git commit -m "Cluster Domain: automatic update to domain by bootstrap script"
   git push origin ${GIT_BRANCH}
+}
+
+patch_file () {
+  APP_PATCH_FILE=$1
+  NEW_VALUE=$2
+  YQ_PATH=$3
+
+  CURRENT_VALUE=$(yq -r ${YQ_PATH} ${APP_PATCH_FILE})
+
+  if [[ ${CURRENT_VALUE} == ${NEW_VALUE} ]]; then
+    echo "${APP_PATCH_FILE} already has value ${NEW_VALUE}"
+    return
+  fi
+
+  yq "${YQ_PATH} = \"${BASE_DOMAIN}\"" -i ${APP_PATCH_FILE}
 }
 
 get_cluster_domain(){
