@@ -2,6 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: composer-ai-config
+  
   namespace: openshift-gitops
   labels:
     gitops.ownedBy: cluster-config
@@ -12,7 +13,7 @@ spec:
   source:
     path: appOfApps
     repoURL: 'https://github.com/redhat-composer-ai/appOfApps.git'
-    targetRevision: main
+    targetRevision: test_branch
     helm:
       parameters:
         - name: clusterDomain
