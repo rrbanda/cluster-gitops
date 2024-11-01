@@ -39,4 +39,4 @@ Once the initial components are deployed, several ArgoCD Application objects are
 
 ## Command for AWS Open Environment
 
-`/bootstrap.sh ocp_version=4.16 --update_base_domain -f --bootstrap_dir=aws-open-environment`
+`./bootstrap.sh ocp_version=4.16 --update_base_domain -f --bootstrap_dir=aws-open-environment`

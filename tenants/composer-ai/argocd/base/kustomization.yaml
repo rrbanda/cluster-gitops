@@ -15,18 +15,6 @@ components:
   - ../../../../components/operators/openshift-gitops/instance/components/health-check-openshift-builds
   - ../../../../components/operators/openshift-gitops/instance/components/kustomize-build-enable-helm
 
-vars:
-  - name: DOMAIN
-    objref:
-      kind: ConfigMap
-      name: domain-config
-      apiVersion: v1
-    fieldref:
-      fieldpath: data.domain
-
-patchesStrategicMerge:
-  - patch.yaml
-
 patches:
   - target:
       kind: ArgoCD

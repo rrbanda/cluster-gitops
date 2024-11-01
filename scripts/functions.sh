@@ -349,7 +349,7 @@ update_cluster_domain(){
 
 
 
-  git add ${APP_PATCH_FILE}
+  git add ${APP_OF_APPS_PATCH_FILE} ${APP_OF_APPS_PATCH_FILE}
   git commit -m "Cluster Domain: automatic update to domain by bootstrap script"
   git push origin ${GIT_BRANCH}
 }

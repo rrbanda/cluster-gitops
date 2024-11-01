@@ -5,7 +5,7 @@ metadata:
 spec:
   href: "https://argocd-server-composer-ai-gitops.<REPLACE_ME>"
   location: ApplicationMenu
-  text: "Developer GitOps"
+  text: "Composer AI GitOps"
   applicationMenu:
     section: OpenShift GitOps
-    imageURL: "https://argo-cd.readthedocs.io/en/stable/assets/logo.png"
+    imageURL: "https://avatars.githubusercontent.com/u/183846251?s=200&v=4"
