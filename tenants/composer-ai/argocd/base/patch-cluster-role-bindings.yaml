@@ -1,0 +1,6 @@
+- op: replace
+  path: /metadata/name
+  value: composer-ai-gitops-admin
+- op: replace
+  path: /subjects/0/namespace
+  value: composer-ai-gitops

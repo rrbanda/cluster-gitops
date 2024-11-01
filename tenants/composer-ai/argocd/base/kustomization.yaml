@@ -26,3 +26,7 @@ patches:
       kind: ConsoleLink
       name: developer-gitops-link
     path: patch-link.yaml
+  - target:
+      kind: ClusterRoleBinding
+      name: openshift-gitops-admin
+    path: patch-cluster-role-bindings.yaml
