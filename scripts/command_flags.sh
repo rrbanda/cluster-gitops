@@ -7,7 +7,7 @@ function show_help {
   echo "                         Default: Will be set to the cluster domain of currently connected cluster if not set"                          
   echo "                         Note: \`--update-base-domain\` must be set or this will be ignored"
   echo " --update_base_domain    If set, will update the base domain in the git repo"
-  echo "  --BOOTSTRAP_DIR=<bootstrap_directory>    Base folder inside of bootstrap/overlays (Optional, pick during script execution if not set)"
+  echo "  --bootstrap_dir=<bootstrap_directory>    Base folder inside of bootstrap/overlays (Optional, pick during script execution if not set)"
   echo "  --timeout=45          Timeout in seconds for waiting for each resource to be ready"
   echo "  -f                    If set, will update the `patch-application-repo-revision` folder inside of your overlay with the current git information and push a checkin"
   echo "  --help                Show this help message"

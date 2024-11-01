@@ -5,6 +5,7 @@ namespace: composer-ai-gitops
 
 resources:
   - ../../../../components/operators/openshift-gitops/instance/base
+  - argocd-console-link.yaml
 
 components:
   - ../../../../components/operators/openshift-gitops/instance/components/annotation-resource-tracking
