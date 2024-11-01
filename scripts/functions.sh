@@ -369,6 +369,21 @@ patch_file () {
   yq "${YQ_PATH} = \"${NEW_VALUE}\"" -i ${APP_PATCH_FILE}
 }
 
+validate_value() {
+  APP_PATCH_FILE=$1
+  NEW_VALUE=$2
+  YQ_PATH=$3
+
+  CURRENT_VALUE=$(yq -r ${YQ_PATH} ${APP_PATCH_FILE})
+
+  if [[ ${CURRENT_VALUE} != ${NEW_VALUE} ]]; then
+    echo "Value ${CURRENT_VALUE} in ${APP_PATCH_FILE} does not match expected value ${NEW_VALUE}"
+    exit 1
+  fi
+    
+
+}
+
 get_cluster_domain(){
   # Step 1: Get the admin console URL
   console_url=$(oc get route console -n openshift-console -o jsonpath='{.spec.host}')

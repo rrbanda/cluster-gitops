@@ -73,6 +73,21 @@ jobs:
           REPO_URL=$(echo "${EXPECTED_REPO}" | sed 's/git:\/\//https:\/\//')
           ./scripts/validate_git_config.sh --expected-repo=${REPO_URL} --github
 
+
+  validate-domain-configs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Code Checkout
+        uses: actions/checkout@v4
+      - name: Validate Repo and Revision
+        env:
+          EXPECTED_REPO: ${{ github.repositoryUrl }}
+        run: |
+          source scripts/functions.sh  
+          validate_value "tenants/composer-ai/apps/base/patch-app-of-apps.yaml" "<REPLACE_ME>" ".[0].value" 
+          validate_value "tenants/composer-ai/argocd/base/patch-link.yaml" "<REPLACE_ME>" ".[0].value" 
+          
+
   check-spelling:
     runs-on: ubuntu-latest
     steps:
