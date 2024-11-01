@@ -342,7 +342,7 @@ update_cluster_domain(){
 
   echo "Updating Base Domain to ${BASE_DOMAIN}"
 
-  APP_PATCH_FILE="tenants/composer-ai/app-of-apps/base/patch-app-of-apps.yaml"
+  APP_PATCH_FILE="tenants/composer-ai/apps/base/patch-app-of-apps.yaml"
 
   CURRNET_BASE_DOMAIN=$(yq -r ".[0].value" ${APP_PATCH_FILE})
 

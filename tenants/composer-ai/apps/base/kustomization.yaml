@@ -5,3 +5,12 @@ namespace: composer-ai-gitops
 
 resources:
   - app-of-apps.yaml
+
+
+patches:
+  # set the repo and branch for applications
+  - path: patch-app-of-apps.yaml
+    target:
+      kind: Application
+      group: argoproj.io
+      name: composer-ai-apps
