@@ -198,7 +198,7 @@ check_branch(){
 
     if [[ ${FORCE} == "true" ]] ; then
       echo "Updating to ${GIT_BRANCH}"
-      update_branch ${CLUSTER_OVERLAY};
+      update_branch ${APP_PATCH_FILE} ${APP_PATCH_PATH};
     else
       echo "Do you wish to update it to ${GIT_BRANCH}?"
 

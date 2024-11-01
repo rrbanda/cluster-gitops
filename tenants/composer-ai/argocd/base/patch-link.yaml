@@ -1,3 +1,3 @@
 - op: replace
   path: /spec/href
-  value: <REPLACE_ME>  # Replace on fork
+  value: https://argocd-server-composer-ai-gitops.apps.cluster-94lbv.94lbv.sandbox2176.opentlc.com # Replace on fork
