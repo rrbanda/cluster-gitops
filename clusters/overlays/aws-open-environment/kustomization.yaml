@@ -25,6 +25,7 @@ replacements:
 - source:
     kind: Application
     fieldPath: spec.source.repoURL
+    name: cluster-config-app-of-apps
   targets:
   - select:
       kind: ApplicationSet
@@ -39,6 +40,7 @@ replacements:
 - source:
     kind: Application
     fieldPath: spec.source.targetRevision
+    name: cluster-config-app-of-apps
   targets:
   - select:
       kind: ApplicationSet
