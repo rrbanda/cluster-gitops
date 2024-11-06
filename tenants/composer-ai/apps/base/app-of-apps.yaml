@@ -19,6 +19,8 @@ spec:
           value: composer-ai-gitops
         - name: application.defaultNamespace
           value: composer-ai-apps
+        - name: clusterDomain
+          value: apps.cluster-w847r.w847r.sandbox196.opentlc.com
   project: default
   syncPolicy:
     automated:
