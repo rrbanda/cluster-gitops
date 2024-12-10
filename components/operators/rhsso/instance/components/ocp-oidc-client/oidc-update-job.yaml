@@ -14,8 +14,16 @@ spec:
         image: registry.redhat.io/openshift4/network-tools-rhel9:latest
         command: ["/bin/sh", "-c", "/etc/scripts/update-oidc.sh"]
         env:
-          - name: KEYCLOAK_URL
-            value: MY_KEYCLOAK_URL
+        - name: INGRESS_NAME
+          value: cluster
+        - name: DNS_NAME
+          value: cluster
+        - name: COMPOSER_NAMESPACE
+          value: rhsaia-dev
+        - name: NAMESPACE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
         volumeMounts:
         - name: update-script
           mountPath: /etc/scripts

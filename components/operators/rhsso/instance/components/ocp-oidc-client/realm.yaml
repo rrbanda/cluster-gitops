@@ -4,7 +4,6 @@ metadata:
   labels:
     app: openshift
   name: openshift-realm
-  namespace: composer-ai-rhsso
 spec:
   realm:
     id: openshift-ai
