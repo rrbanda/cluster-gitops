@@ -4,7 +4,7 @@ Installs the Red Hat SSO (keycloak) operator and/or instance.
 
 ## Usage
 
-### Install the operator
+### Install the operator only
 
 The current *overlays* available are for the following channels:
 
@@ -40,4 +40,6 @@ The following items are created:
 * `ServiceAccount` `openshift-oidc` - A service account used as an oidc provider.  This allows Keycloak to use OpenShift as an IDP.  One or more annotations for redirect uris must correctly point back to Keycloak. See patch-sa.yaml for example substitutions. See [Service accounts as OAuth clients](https://docs.redhat.com/en/documentation/openshift_container_platform/4.16/html/authentication_and_authorization/using-service-accounts-as-oauth-client#service-accounts-as-oauth-clients_using-service-accounts-as-oauth-client) for more details.  
 * `Secret` `openshift-oidc-secret` - A secret providing a long lasting token for the `openshift-oidc` service account.  This is required as Keycloak requires a token in the OpenShift IDP configuration.  See [Service Accounts Admin](https://kubernetes.io/docs/reference/access-authn-authz/service-accounts-admin/#create-token) for more details.
 * `Role` and `RoleBinding` giving permissions to the Job to read secrets required to use the Keycloak API to update secrets and config.
-* `Job` `update-idp-credentials` - A Job that runs as a PostSync hook in Argo in order to update required secrets and redirect/baseUrls within the Keycloak realm. 
+* `Job` `update-idp-credentials` - A Job that runs as a PostSync hook in Argo in order to update required secrets and redirect/baseUrls within the Keycloak realm and related service account annotations. NOTE: This will run after every Argo sync, values will be reset after any manifest changes. 
+
+NOTE: The job sets the `backend-service` client redirectUris to '*'.  This should be changed for any non-demo workload to allow minimal registered application permissions. 

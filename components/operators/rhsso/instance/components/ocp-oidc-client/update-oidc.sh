@@ -79,18 +79,18 @@ curl -k -s "$KEYCLOAK_URL/auth/admin/realms/openshift-ai/clients" \
 echo "Updating backend-service idp manifest"
 jq '.[] | select(.clientId == "backend-service")' /tmp/clients.json > /tmp/backend-service.json
 CLIENT_ID=$(jq '.id' /tmp/backend-service.json | tr -d '"')
-cat /tmp/backend-service.json
 
-REDIRECT_URIS=("https://quarkus-router-llm-"$COMPOSER_NAMESPACE"."$APP_URL"/*")
+# Redirect URI depends on the individual clients. Using * for the demo
+# REDIRECT_URIS=("https://quarkus-router-llm-"$COMPOSER_NAMESPACE"."$APP_URL"/*" '*')
+REDIRECT_URIS=("*")
 
-jq --arg redirect $REDIRECT_URIS \
+jq --arg redirect "$REDIRECT_URIS" \
   '.redirectUris = [$redirect] ' /tmp/backend-service.json > /tmp/backend-updated.json 
-curl -k -X PUT "$KEYCLOAK_URL/auth/admin/realms/openshift-ai/clients/"$CLIENT_ID \
+curl -k -s -X PUT "$KEYCLOAK_URL/auth/admin/realms/openshift-ai/clients/"$CLIENT_ID \
 --header 'Authorization: Bearer '$access_token \
 --header 'Content-Type: application/json' \
 --data @/tmp/backend-updated.json
 
-cat /tmp/backend-updated.json
 # echo "Update Client with a random secret"
 # curl -X POST '$KEYCLOAK_URL/auth/admin/realms/openshift-ai/clients/'$CLIENT_ID'/client-secret' \
 # --header 'Authorization: Bearer' $access_token \
