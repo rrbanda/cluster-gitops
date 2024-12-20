@@ -1,6 +1,30 @@
-# Red Hat Composer AI Infrastructure GitOps
 
-Welcome to the Red Hat Composer AI Infrastructure GitOps project\! This project is a fork of the upstream [AI Accelerator project](https://github.com/redhat-ai-services/ai-accelerator) and is designed to deploy all of the required cluster components for Composer AI to an OpenShift cluster.
+# Cluster-GitOps Repository
+
+## Structure Overview
+- **Key Directories**:
+  - `clusters`: Defines configurations for managing OpenShift clusters in a GitOps model.
+  - `components`: Contains reusable manifests for shared infrastructure or application components.
+  - `tenants`: Isolates configurations for multi-tenant setups, ensuring segregation for different teams or projects.
+- **Files**:
+  - `bootstrap.sh`: Script for automating the initial setup, such as linking OpenShift with ArgoCD.
+  - `README.md`: Documentation for understanding and using the repository.
+  - Config files:
+    - `.yamllint`: Ensures YAML configurations adhere to best practices.
+    - `.spellcheck.yaml`: Configures spell checking for consistency in documentation.
+
+## Usage in ArgoCD and OpenShift
+- **Cluster-Level Management**:
+  - Provides a declarative way to manage OpenShift clusters using GitOps principles.
+  - Ensures consistency and repeatability across different environments.
+- **Multi-Tenant Support**:
+  - Enables isolated configurations for different tenants, enhancing flexibility for teams.
+- **Benefits**:
+  - Simplifies cluster setup and maintenance.
+  - Streamlines infrastructure and application component reuse.
+
+
+# Welcome to the Red Hat Composer AI Infrastructure GitOps project\! This project is a fork of the upstream [AI Accelerator project](https://github.com/redhat-ai-services/ai-accelerator) and is designed to deploy all of the required cluster components for Composer AI to an OpenShift cluster.
 
 ![AI Accelerator Overview](documentation/diagrams/AI_Accelerator.drawio.png)
 
